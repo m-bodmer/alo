@@ -1,0 +1,53 @@
+// Mixins
+
+// Responsive Design
+$tablet-width: 600px;
+$desktop-width: 1024px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin tablet-to-desktop {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+// Fonts
+/* @include font-face($style-name, $file, $family, $category);
+    $style-name being the name of the font e.g. Helvetica
+    $file meaning the file name, without the file extensions
+    $family being the folder inside the fonts folder where the font files are
+    $category is serif or sans-serif or monospace etc. as a fall back in CSS
+*/
+@mixin font-face($style-name, $file, $family, $category:"") {
+    $filepath: font-path($family + "/" + $file);
+    @font-face {
+        font-family: "#{$style-name}";
+        src: url(font-path($family + "/" + $file + ".eot"));
+        src: url(font-path($family + "/" + $file + ".eot?iefix")) format('embedded-opentype'),
+            url(font-path($family + "/" + $file + ".woff")) format('woff'),
+            url(font-path($family + "/" + $file + ".ttf"))  format('truetype'),
+            url(font-path($family + "/" + $file + ".svg") + "#" + $style-name + "") format('svg');
+    }
+    %#{$style-name} {
+        font: {
+            @if $category != "" {
+                family: "#{$style-name}", #{$category};
+            }
+            @else {
+                family: "#{$style-name}";
+                weight: normal;
+            }
+        }
+    }
+}

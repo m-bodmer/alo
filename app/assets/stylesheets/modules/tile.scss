@@ -1,0 +1,27 @@
+.tile {
+  padding: 6% 5%;
+
+  &.tile__dark {
+    background-color: $intro-color;
+    color: #F7F8FB;
+  }
+
+  &.tile__light {
+    background-color: #F7F8FC;
+    color: #0A090A;
+    p {
+      opacity: 0.7;
+    }
+  }
+}
+
+.tile-footer {
+  padding: 1% 5%;
+  p {
+    font-size: 12px;
+    opacity: 0.9;
+    a:hover {
+      color: $cta-hover;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+// Font includes
+@include font-face('Montserrat Bold', 'montserrat-bold-webfont', 'montserrat', 'sans-serif');
+@include font-face('Montserrat Regular', 'montserrat-regular-webfont', 'montserrat', 'sans-serif');
+@include font-face('Open Sans Regular', 'opensans-regular-webfont', 'open-sans', 'sans-serif');
+
+body {
+  background-color: #F7F8FB;
+}
+
+h1 {
+  margin: 0 0 0.67em 0;
+  font-family: "Montserrat Regular";
+  letter-spacing: 0.02em;
+}
+
+h2, h3 {
+  font-family: "Montserrat Regular";
+}
+
+p {
+  font-family: "Open Sans Regular";
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  li {
+    display: inline-block;
+  }
+}
+
+a {
+  color: $white-text;
+  text-decoration: none;
+  transition: color 0.08s ease;
+}

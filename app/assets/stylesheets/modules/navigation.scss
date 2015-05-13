@@ -1,0 +1,53 @@
+.navigation {
+  overflow: hidden;
+  height: 56px;
+  box-shadow: 0 0 2px rgba(6,8,8,0.15);
+  padding: 0 0 0 5%;
+}
+
+.logo {
+  float: left;
+  width: 30%;
+  max-height: 40px;
+  height: 100%;
+  margin: 8px auto;
+}
+
+.logo__image-text {
+  // background: transparent asset-url("troop-logo.svg") no-repeat center left;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.navigation__links {
+  float: right;
+  margin: 6px 0 0 0;
+  li:first-child {
+    margin: 0 10px 0 0;
+  }
+  li:last-child {
+    margin: 0 20px 0 0;
+  }
+
+  li {
+    padding: 14px 18px 12px 18px;
+    color: #0A090A;
+    transition: all 0.08s ease;
+    &:hover {
+      color: $cta-hover;
+    }
+  }
+
+  .button__cta {
+    background-color: $cta;
+    border-radius: 2px;
+    color: $white-text;
+    &:hover {
+      background-color: $cta-hover;
+      color: $white-text;
+    }
+  }
+}
+

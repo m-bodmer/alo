@@ -1,0 +1,62 @@
+.tile-intro {
+  background-color: $intro-color;
+  background: transparent no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+  p {
+    text-shadow: 0 1px 0 black;
+    color: #fff;
+  }
+}
+
+.tile--intro__desc {
+  text-align: center;
+  @include tablet {
+    text-align: left;
+    float: left;
+    width: 50%;
+  }
+  h1 {
+    text-shadow: 0 1px 0 black;
+    color: #fff;
+    a {
+      &:hover {
+        color: $cta;
+      }
+    }
+  }
+  @include desktop {
+    max-width: 500px;
+  }
+}
+
+input[type="email"] {
+  padding: 18px 13px 16px 13px;
+  border: 0;
+  color: #0A090A;
+  border-radius: 2px;
+  font-size: 20px;
+  width: 55%;
+  max-width: 250px;
+  &:focus {
+    outline-color: $cta;
+    outline-width: 3px;
+  }
+}
+
+input[type="submit"] {
+  border: 0;
+  background-color: $cta;
+  border-radius: 2px;
+  color: $white-text;
+  padding: 18px 13px 17px 13px;
+  font-size: 20px;
+  transition: all 0.08s ease;
+  &:hover {
+    background-color: $cta-hover;
+    color: $white-text;
+  }
+  @include tablet {
+    width: 100px;
+  }
+}
