@@ -5,11 +5,11 @@ var TaskModel = Backbone.Model.extend({
   },
 
   validate(attrs) {
-    if( !attrs.title ){
+    if (!attrs.title) {
       return 'Title is required';
     }
 
-    if( !attrs.content ){
+    if (!attrs.content) {
       return 'You have to say something about your task';
     }
   }
@@ -25,7 +25,7 @@ var TaskView = Backbone.View.extend({
   template: taskTemplate,
 
   initialize() {
-    if( !this.model ){
+    if (!this.model) {
       throw new Error('You must provide a Task model');
     }
 
@@ -49,7 +49,7 @@ var TasksApp = Backbone.View.extend({
 
   renderTask(model) {
     model.view = new TaskView({ model: model });
-    this.$('#task-list').prepend( model.view.render() );
+    this.$('#task-list').prepend(model.view.render());
     this.resetFormFields();
     this.renderTaskCount();
   },
@@ -61,7 +61,7 @@ var TasksApp = Backbone.View.extend({
   renderTaskCount() {
     var length = this.collection.length;
     var count = length === 1 ? '1 Task' : length + ' Tasks';
-    this.$('.task-count').text( count );
+    this.$('.task-count').text(count);
   },
 
   events: {
@@ -79,6 +79,6 @@ var TasksApp = Backbone.View.extend({
     };
 
     // The `validate` option ensures that empty tasks aren't added
-    this.collection.add( task, { validate: true });
+    this.collection.add(task, { validate: true });
   }
 });
