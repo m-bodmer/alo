@@ -6,37 +6,17 @@
     <a href="#"><li>Login</li></a>
   </ul>
 </nav>
-<!--
-<section class="tile tile__dark tile-intro">
-  <div class="tile--intro__desc">
-    <h1>Lorem ipsum</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat.</p>
-  </div>
-</section> -->
 
 <section class="tile tile__light">
-  <div class="tasks">
-    <div class="todo">
-      <h3>Title of TODO</h3>
-      <p>A short description of the TODO</p>
-    </div>
-    <div class="todo">
-      <h3>Title of TODO</h3>
-      <p>A short description of the TODO</p>
-    </div>
-    <div class="todo">
-      <h3>Title of TODO</h3>
-      <p>A short description of the TODO</p>
-    </div>
+  <div id="js-tasks" class="tasks">
+    <ul id="task-list"></ul>
 
+    <p class="task-count"></p>
 
-    <div class="todo-manager">
-      <div class="todo-manager__add">
-        <input type="text" name="input" placeholder="TODO TITLE"></input>
-        <input type="text" name="input" placeholder="TODO MESSAGE"></input>
+    <div class="task-manager">
+      <div class="task-manager__add">
+        <input type="text" name="title" placeholder="TODO TITLE"></input>
+        <textarea type="text" name="input" placeholder="TODO MESSAGE"></textarea>
         <button type="submit">Add new TODO</button>
       </div>
     </div>

@@ -31,6 +31,9 @@ gem 'rails_12factor', group: :production
 gem "sprockets"
 gem "sprockets-es6"
 
+# Templating engine
+gem 'handlebars_assets'
+
 # Authentication
 gem "sorcery"
 

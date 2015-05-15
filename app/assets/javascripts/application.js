@@ -13,6 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+
 //= require lib/underscore
 //= require lib/backbone
+//= require handlebars.runtime
+//= require lib/moment
+
+//= require_tree ./application/templates
 //= require_tree .

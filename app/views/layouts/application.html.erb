@@ -8,14 +8,13 @@
   <link rel="icon" type="image/png" href="<%= asset_path 'favicon-16x16.png' %>" sizes="16x16" />
   <link rel="icon" type="image/png" href="<%= asset_path 'favicon-32x32.png' %>" sizes="32x32" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="page-container">
+  <div id="js-page-container" class="page-container">
     <%= yield %>
   </div>
-
+<!--
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -25,6 +24,7 @@
     ga('create', 'UA-XXXXXXXX', 'auto');
     ga('send', 'pageview');
 
-  </script>
+  </script> -->
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
