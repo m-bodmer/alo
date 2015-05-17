@@ -37,6 +37,9 @@ gem 'handlebars_assets'
 # Authentication
 gem "sorcery"
 
+# Respond_with
+gem 'responders'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

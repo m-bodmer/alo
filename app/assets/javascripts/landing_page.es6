@@ -5,10 +5,6 @@ var TaskModel = Backbone.Model.extend({
   },
 
   validate(attrs) {
-    if (!attrs.title) {
-      return 'Title is required';
-    }
-
     if (!attrs.content) {
       return 'You have to say something about your task';
     }
@@ -16,6 +12,7 @@ var TaskModel = Backbone.Model.extend({
 });
 
 var TasksCollection = Backbone.Collection.extend({
+  url: '/tasks',
   model: TaskModel
 });
 
@@ -24,17 +21,30 @@ var taskTemplate = HandlebarsTemplates['task'];
 var TaskView = Backbone.View.extend({
   template: taskTemplate,
 
+  events: {
+    "click .delete" : "destroy",
+    "click .edit" : "edit"
+  },
+
   initialize() {
     if (!this.model) {
       throw new Error('You must provide a Task model');
     }
 
-    this.listenTo( this.model, 'remove', this.remove);
+    this.listenTo(this.model, 'remove', this.destroy);
   },
 
   render() {
     this.$el = this.template(this.model.attributes);
     return this.$el;
+  },
+
+  destroy() {
+    this.model.destroy();
+  },
+
+  edit() {
+    // Edit logic here
   }
 });
 
@@ -43,8 +53,9 @@ var TasksApp = Backbone.View.extend({
 
   initialize() {
     this.collection = new TasksCollection();
-    this.listenTo( this.collection, 'add', this.renderTask );
-    this.listenTo( this.collection, 'remove', this.renderTaskCount );
+    this.listenTo(this.collection, 'add', this.renderTask);
+    this.listenTo(this.collection, 'remove', this.renderTaskCount);
+    this.collection.fetch();
   },
 
   renderTask(model) {
@@ -79,6 +90,5 @@ var TasksApp = Backbone.View.extend({
     };
 
     // The `validate` option ensures that empty tasks aren't added
-    this.collection.add(task, { validate: true });
-  }
+    this.collection.create(task, {validate: true});
 });
