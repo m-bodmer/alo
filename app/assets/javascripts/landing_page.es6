@@ -1,6 +1,6 @@
-var TaskModel = Backbone.Model.extend({
+let TaskModel = Backbone.Model.extend({
   initialize() {
-    var date = moment(this.get('created_at'));
+    let date = moment(this.get('created_at'));
     this.set("formattedDate", date.fromNow());
   },
 
@@ -11,19 +11,20 @@ var TaskModel = Backbone.Model.extend({
   }
 });
 
-var TasksCollection = Backbone.Collection.extend({
+let TasksCollection = Backbone.Collection.extend({
   url: '/tasks',
   model: TaskModel
 });
 
-var taskTemplate = HandlebarsTemplates['task'];
+let template = HandlebarsTemplates['task'];
 
-var TaskView = Backbone.View.extend({
-  template: taskTemplate,
+let TaskView = Backbone.View.extend({
+  tagName: 'li',
+  className: 'task',
+  template: template,
 
   events: {
-    "click .delete" : "destroy",
-    "click .edit" : "edit"
+    'click .delete': 'destroy'
   },
 
   initialize() {
@@ -31,24 +32,22 @@ var TaskView = Backbone.View.extend({
       throw new Error('You must provide a Task model');
     }
 
-    this.listenTo(this.model, 'remove', this.destroy);
+    // Remove the view from the DOM
+    this.listenTo(this.model, 'remove', this.remove);
   },
 
   render() {
-    this.$el = this.template(this.model.attributes);
+    this.$el.html(this.template(this.model.attributes));
     return this.$el;
   },
 
-  destroy() {
+  destroy(e) {
+    e.preventDefault();
     this.model.destroy();
-  },
-
-  edit() {
-    // Edit logic here
   }
 });
 
-var TasksApp = Backbone.View.extend({
+let TasksApp = Backbone.View.extend({
   el: $('#js-tasks'),
 
   initialize() {
@@ -59,7 +58,7 @@ var TasksApp = Backbone.View.extend({
   },
 
   renderTask(model) {
-    model.view = new TaskView({ model: model });
+    model.view = new TaskView({model: model});
     this.$('#task-list').prepend(model.view.render());
     this.resetFormFields();
     this.renderTaskCount();
@@ -70,8 +69,8 @@ var TasksApp = Backbone.View.extend({
   },
 
   renderTaskCount() {
-    var length = this.collection.length;
-    var count = length === 1 ? '1 Task' : length + ' Tasks';
+    let length = this.collection.length;
+    let count = length === 1 ? '1 Task' : length + ' Tasks';
     this.$('.task-count').text(count);
   },
 
@@ -83,7 +82,7 @@ var TasksApp = Backbone.View.extend({
     event.preventDefault();
 
     // Create a new Task Model with the data in the form
-    var task = {
+    let task = {
       content: this.$('.task-manager__add textarea').val(),
       title: this.$('.task-manager__add input[name="title"]').val(),
       created_at: new Date()
@@ -91,4 +90,5 @@ var TasksApp = Backbone.View.extend({
 
     // The `validate` option ensures that empty tasks aren't added
     this.collection.create(task, {validate: true});
+  }
 });

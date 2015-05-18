@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'landing_page#index'
 
-  resources :tasks, only: [:index, :create]
+  resources :tasks, only: [:index, :create, :destroy, :update]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
