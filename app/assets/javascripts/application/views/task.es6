@@ -1,19 +1,28 @@
-App.Views.Task.Index = Backbone.View.extend({
+let TaskView = Backbone.View.extend({
+  tagName: 'li',
+  className: 'task',
+  template: HandlebarsTemplates['task'],
+
   events: {
-    "click .toggle" : "toggleDone"
+    'click .delete': 'destroy'
   },
 
-  initialize: function() {
-    this.listenTo(this.model, 'change', this.render);
+  initialize() {
+    if (!this.model) {
+      throw new Error('You must provide a Task model');
+    }
+
+    // Remove the view from the DOM
+    this.listenTo(this.model, 'remove', this.remove);
   },
 
-  render: function() {
-    debugger;
-    this.$el.html();
-    this.$el.toggleClass('done', this.model.get('done'));
+  render() {
+    this.$el.html(this.template(this.model.attributes));
+    return this.$el;
   },
 
-  toggleDone: function() {
-    this.model.toggleDone();
+  destroy(e) {
+    e.preventDefault();
+    this.model.destroy();
   }
-})
+});

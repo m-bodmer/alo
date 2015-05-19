@@ -209,7 +209,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   sorcery
   spring
-  sprockets
+  sprockets (~> 3.0.0.beta)
   sprockets-es6
   sqlite3
   therubyracer

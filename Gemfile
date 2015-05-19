@@ -28,7 +28,7 @@ gem 'sqlite3', group: :development
 gem 'rails_12factor', group: :production
 
 # ES6 transpiling
-gem "sprockets"
+gem 'sprockets', '~>3.0.0.beta'
 gem "sprockets-es6"
 
 # Templating engine

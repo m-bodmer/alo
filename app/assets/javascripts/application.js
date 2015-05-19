@@ -20,4 +20,5 @@
 //= require lib/moment
 
 //= require_tree ./application/templates
+//= require_tree ./application/models
 //= require_tree .
