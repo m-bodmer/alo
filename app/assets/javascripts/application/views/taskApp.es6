@@ -4,7 +4,7 @@ let TasksApp = Backbone.View.extend({
   initialize() {
     this.collection = new TasksCollection();
     this.listenTo(this.collection, 'add', this.renderTask);
-    this.listenTo(this.collection, 'remove', this.renderTaskCount);
+    this.listenTo(this.collection, 'add remove', this.renderTaskCount);
     this.collection.fetch();
   },
 
@@ -12,7 +12,6 @@ let TasksApp = Backbone.View.extend({
     model.view = new TaskView({model: model});
     this.$('#task-list').prepend(model.view.render());
     this.resetFormFields();
-    this.renderTaskCount();
   },
 
   resetFormFields() {

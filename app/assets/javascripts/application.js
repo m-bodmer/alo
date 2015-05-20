@@ -16,6 +16,7 @@
 
 //= require lib/underscore
 //= require lib/backbone
+//= require lib/backbone.marionette
 //= require handlebars.runtime
 //= require lib/moment
 
